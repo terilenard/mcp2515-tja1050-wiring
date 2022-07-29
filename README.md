@@ -8,6 +8,8 @@ The current page describes different posibilities of connecting a MCP2515 with T
 * [raspberrypi.org: CAN bus on raspberry pi with MCP2515]( https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=141052&sid=37e6879817d1f410311246f97a0a20a3)
 * [How to Connect Raspberry Pi to CAN Bus]( http://youness.net/raspberry-pi/raspberry-pi-can-bus)
 * [Say it with a CAN Bus and a Raspberry Pi]( https://modis.io/blog/say-it-with-a-can-bus/)
+* [CAN utils for linux command line]( https://github.com/linux-can/can-utils)
+* [Python module for CAN communication]( https://github.com/hardbyte/python-can)
 
 ## Arduino UNO
 
@@ -31,7 +33,9 @@ The current page describes different posibilities of connecting a MCP2515 with T
 
 ## Raspberry Pi 3/4
 
-To use a MCP2515 CAN controller with TJA1050 transciever [this modification](https://forums.raspberrypi.com/viewtopic.php?f=44&t=141052&sid=37e6879817d1f410311246f97a0a20a3) must be done.
+To use a MCP2515 CAN controller with TJA1050 transciever [this modification](https://forums.raspberrypi.com/viewtopic.php?f=44&t=141052&sid=37e6879817d1f410311246f97a0a20a3) must be done. 
+
+It is necessary to modify the CAN-module because it has only one VCC pin, but the MCP2515 must be powered from 3v3 and the TJA1050 CAN transceiver must be powered from 5v. Powering both chips from 5V would work, but then a level-shifter for the SPI would be needed. The Pis GPIO pins are NOT 5V tolerant. Cut a trace on the PCB and soldered a pin onto the trace to deliver 5V only to the TJA1050. Be sure to cut the trace before the capacitor (otherwise if there is no capacitor, add one (about 100nF maybe)).
 
 ### Single MCP2515
 
