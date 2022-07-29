@@ -37,6 +37,8 @@ To use a MCP2515 CAN controller with TJA1050 transciever [this modification](htt
 
 It is necessary to modify the CAN-module because it has only one VCC pin, but the MCP2515 must be powered from 3v3 and the TJA1050 CAN transceiver must be powered from 5v. Powering both chips from 5V would work, but then a level-shifter for the SPI would be needed. The Pis GPIO pins are NOT 5V tolerant. Cut a trace on the PCB and soldered a pin onto the trace to deliver 5V only to the TJA1050. Be sure to cut the trace before the capacitor (otherwise if there is no capacitor, add one (about 100nF maybe)).
 
+![image info](./soldering-mcp2515-tja1050.png)
+
 ### Single MCP2515
 
 | RPi  | MCP2515+TJA1050 |
@@ -73,6 +75,13 @@ TODO
 | 39   | GND             |
 | 4    | TJA1050 VCC 5v  |
 | 1    | MCP2515 VCC 3v3 |
+
+![image info](./rpi-tpm-front.png)
+
+
+![image info](./rpi-tpm-back.png)
+
+![image info](./mcp2515.png)
 
 Boot config:
 
